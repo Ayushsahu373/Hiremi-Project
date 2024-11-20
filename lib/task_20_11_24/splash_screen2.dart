@@ -10,15 +10,11 @@ class _NextScreenState extends State<NextScreen> {
   @override
   void initState() {
     super.initState();
-
-    // Wait for 1 second, then navigate to the next screen
     Future.delayed(Duration(seconds: 1), () {
       if (mounted) {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  FinalScreen()), // Replace FinalScreen with your next screen
+          MaterialPageRoute(builder: (context) => FinalScreen()),
         );
       }
     });
@@ -26,7 +22,10 @@ class _NextScreenState extends State<NextScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    double screenWidth = MediaQuery.of(context).size.width;
+
+    return Scaffold(
+      backgroundColor: Colors.white,
+    );
   }
 }
-

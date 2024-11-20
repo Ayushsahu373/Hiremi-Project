@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wyreflow_intern_ayush/task_20_11_24/splash_screen2.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -10,20 +11,17 @@ class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
-  bool _isZoomed = false;
 
   @override
   void initState() {
     super.initState();
 
-    
     _controller = AnimationController(
-      duration: Duration(seconds: 2), // Animation duration for zoom
-      vsync:
-          this, 
+      duration: Duration(seconds: 2),
+      vsync: this,
     );
 
-    _scaleAnimation = Tween<double>(begin: 1.0, end: 20).animate(
+    _scaleAnimation = Tween<double>(begin: 1.0, end: 8.0).animate(
       CurvedAnimation(
         parent: _controller,
         curve: Curves.easeInOut,
@@ -44,17 +42,19 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   void dispose() {
-    _controller
-        .dispose(); 
+    _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: Container(
-        width: double.infinity,
-        height: double.infinity,
+        width: screenWidth,
+        height: screenHeight,
         decoration: BoxDecoration(
           gradient: RadialGradient(
             center: Alignment.center,
@@ -63,24 +63,20 @@ class _SplashScreenState extends State<SplashScreen>
             stops: [0.18, 1.0],
           ),
         ),
-        child: Stack(
-          children: [
-            Center(
-              child: AnimatedBuilder(
-                animation: _controller,
-                builder: (context, child) {
-                  return Transform.scale(
-                    scale: _scaleAnimation.value,
-                    child: Image.asset(
-                      'lib/assets/tie_logo.png',
-                      width: 100,
-                      height: 100,
-                    ),
-                  );
-                },
-              ),
-            ),
-          ],
+        child: Center(
+          child: AnimatedBuilder(
+            animation: _controller,
+            builder: (context, child) {
+              return Transform.scale(
+                scale: _scaleAnimation.value,
+                child: SvgPicture.asset(
+                  'lib/assets/tie.svg',
+                  width: screenWidth * 0.25,
+                  height: screenHeight * 0.25,
+                ),
+              );
+            },
+          ),
         ),
       ),
     );

@@ -14,8 +14,7 @@ class _FinalScreenState extends State<FinalScreen> {
       if (mounted) {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) =>  //swip to start "akshaj's work"
-          ),
+          MaterialPageRoute(builder: (context) => TaskOfAkshajScreen()),
         );
       }
     });
@@ -23,14 +22,27 @@ class _FinalScreenState extends State<FinalScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
         child: Image.asset(
           'lib/assets/hireme_logo.png',
-          width: 200,
-          height: 200,
+          width: screenWidth * 0.5, // Dynamic width
+          height: screenWidth * 0.5, // Dynamic height
         ),
       ),
+    );
+  }
+}
+
+class TaskOfAkshajScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Task of Akshaj Screen')),
+      body: Center(child: Text('This is the task of Akshaj screen!')),
     );
   }
 }
