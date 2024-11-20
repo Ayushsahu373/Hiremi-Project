@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:wyreflow_intern_ayush/colors.dart'; // Import the colors file
+import 'package:wyreflow_intern_ayush/task_16_11_24/colors.dart'; // Import the colors file
 
 class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
@@ -15,7 +15,7 @@ class CustomTextField extends StatelessWidget {
     this.isPassword = false,
     this.validator,
   }) : super(key: key);
-
+ 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;

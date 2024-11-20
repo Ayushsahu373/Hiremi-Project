@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:wyreflow_intern_ayush/TextField_widget.dart';
-import 'package:wyreflow_intern_ayush/colors.dart'; // Import the colors file
+import 'package:wyreflow_intern_ayush/task_16_11_24/TextField_widget.dart';
+import 'package:wyreflow_intern_ayush/task_16_11_24/colors.dart'; // Import the colors file
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
